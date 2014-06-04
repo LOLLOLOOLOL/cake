@@ -9,16 +9,19 @@ takinglaughterseriously@gmail.com
 
 June 3, 2014
 
+
 **Abstract:**
 
 	By considering a Bitcoin transaction output of arbitrary size to represent a specific quantity of tokens, we can implement a protocol layer that has flexibility similar to the Master Protocol, and security similar to colored coins. This unique representation of tokens provides a means by which an abstraction of quantity and quality combined with the inherently validity of Bitcoin transactions grants the trustless exchange of tokens for Bitcoin. The model of this protocol allows an instanced approach to implementation that provides a base level of security and transaction definitions while fostering the creativity and innovation of the community.
 
 
+	
 **Introduction:**
 
 The nature of the Bitcoin protocol and network lend to the incentivization of various projects which are parasitic to the blockchain. Namely these are protocols which store data in the blockchain, and use that data as the input for a state machine which defines quantities and qualities of tokens “in” various bitcoin addresses. The vague implementation of these protocols unfortunately has lead to a financial liability associated with these higher level transactions due to the challenge of transaction validation, and inattention to the importance of protocol specification.
 
 This paper proposes a methodology of crafting transactions which can form a protocol on top of Bitcoin, while taking advantage of Bitcoin’s inherent protection against double-spends, and proof of work. The key advantage, however, is the ability to fork an implementation of the protocol quickly and efficiently while providing the depth of customization previously available only in full base protocol cryptocurrencies. Due diligence is still of critical importance, but this playground can serve to mitigate risk in the pursuit of practicality in Bitcoin protocol layers, and as a means of crowdsourcing functional innovation.
+
 
 
 **The transaction model:**
@@ -31,6 +34,7 @@ A transaction will send all tokens to the last output, unless otherwise specifie
 If we spend an output that represents a quantity of tokens in a normal Bitcoin transaction, the tokens will typically be returned to the sender at a change address. By carefully crafting transactions, we can guarantee that an invalid transaction on this protocol layer will return all tokens to the sender. This basic mechanism of token transfer allows the protocol to stay in line with Bitcoin best practices by not reusing addresses, and provides a means by which the fungibility of an output is violated only insofar that it represents a quantity of tokens.
 
 The OP_RETURN output specifies how the transaction is to be processed. The encoded data acts as a script which when interpreted using formal definitions can perform a wide variety of functions.
+
 
 
 **The case for script:**
@@ -55,20 +59,23 @@ Each address that has a quantity of tokens received an output from the transacti
 
 This rule supports the transaction model, and also enables a script to perform complex functions with a small data footprint, by referring to input and output indices instead of full addresses.
 
+
+
 **Staged transactions:**
 
 Script can be contained in one or more OP_RETURN outputs across one or more transactions. A script that spans multiple transactions can establish a **staged transaction**, which allows a transaction to be reviewed before submitted, or a proposed transaction to be synchronized with some external event.
 
 A staged transaction must adhere to the following requirements:
 
-Each transaction has an output equal to the sum of the inputs minus any transaction fees.
-If a transaction is the [n]th out of a total of [m] script transactions, then transaction [n+1] must spend the an output of transaction [n].
-The [m]th transaction spends an output from transaction [m-1], and is called the **terminal transaction.**
-The terminal transaction must fulfill the requirements established by the script.
+- Each transaction has an output equal to the sum of the inputs minus any transaction fees.
+- If a transaction is the [n]th out of a total of [m] script transactions, then transaction [n+1] must spend the an output of transaction [n].
+- The [m]th transaction spends an output from transaction [m-1], and is called the **terminal transaction.**
+- The terminal transaction must fulfill the requirements established by the script.
 
 A staged transaction can be broadcast for only the cost of the miners fee, and contemplated for validity by any relevant parties. The terminal transaction can be broadcast as desired by the sending user, and provided the staged transaction is was not invalidated, the terminal transaction will finalize it.
 
 The core benefit of staged transactions lie in the potential for trustless and secure exchange of Bitcoin with any tokens. This ability is granted when a staged transaction is approved by both the buyer and the seller, and the terminal transaction is signed by both parties. The terminal transaction simultaneously sends the Bitcoin to the seller and finalizes the transfer of tokens to the buyer.
+
 
 
 **Instanced implementation:**
@@ -76,6 +83,7 @@ The core benefit of staged transactions lie in the potential for trustless and s
 By globally defining a sufficiently large ecosystem parameter in the header of OP_RETURN outputs, developers can self serve an instance of the protocol and have a platform on which to innovate, experiment, or even deploy functional implementations. Note that the term instance is used specifically to identify a protocol implementation that is interoperable with other protocol implementations.
 
 The effect of instanced implementation is that a wealth of tokens with different qualities and properties can take advantage of the Bitcoin network and securely interact across protocol implementations and between layers. By encouraging a side by side instance of the protocol the community stands to benefit from the experiences of other developers, as well as to standardize a platform on which innovation can cross project lines.
+
 
 
 **The specification:**
@@ -104,7 +112,6 @@ This formalization of definitions along with the transaction model outline a met
 
 
 
-
 **Revision control:**
 
 In the scenario that a protocol has been deployed for use, the developers may find it infeasible to serve another protocol instance to fix a bug or implement a few feature. 
@@ -114,6 +121,7 @@ In this case, the developers can encode the formal definitions of script functio
 Best practice would be for the developers to stage a transaction which outlines and establishes all specification changes, and indicate the smallest block number at which the terminal transaction can finalize the staged transaction. In this manner it’s possible to hard fork a protocol instantaneously, without risks above and beyond that which is inherent in a protocol specification revision.
 
 This method of revision control further enables the ability to reasonably prove the validity of a transaction at the time that the transaction was broadcast to the network. By programmatically accessing the function definitions stored in the blockchain that are relevant to a transaction, a client can provably define a chain of token ownership from issuance to the current holder.
+
 
 
 **Considerations:**
