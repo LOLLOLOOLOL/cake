@@ -12,7 +12,7 @@ June 3, 2014
 
 **Abstract:**
 
-	By considering a Bitcoin transaction output of arbitrary size to represent a specific quantity of tokens, we can implement a protocol layer that has flexibility similar to the Master Protocol, and security similar to colored coins. This unique representation of tokens provides a means by which an abstraction of quantity and quality combined with the inherently validity of Bitcoin transactions grants the trustless exchange of tokens for Bitcoin. The model of this protocol allows an instanced approach to implementation that provides a base level of security and transaction definitions while fostering the creativity and innovation of the community.
+> By considering a Bitcoin transaction output of arbitrary size to represent a specific quantity of tokens, we can implement a protocol layer that has flexibility similar to the Master Protocol, and security similar to colored coins. This unique representation of tokens provides a means by which an abstraction of quantity and quality combined with the inherently validity of Bitcoin transactions grants the trustless exchange of tokens for Bitcoin. The model of this protocol allows an instanced approach to implementation that provides a base level of security and transaction definitions while fostering the creativity and innovation of the community.
 
 
 	
@@ -79,6 +79,7 @@ The core benefit of staged transactions lie in the potential for trustless and s
 
 
 **Indirect token distribution:**
+
 Say the feature that a developer intends to implement is a method by which a token issuer can pay dividends. This possibility may not seem feasible with the understanding that:
 
 - The tokens in the initial distribution may be spent, and thus dividends shouldn't be paid to that recipients address.
