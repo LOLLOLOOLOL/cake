@@ -78,6 +78,25 @@ The core benefit of staged transactions lie in the potential for trustless and s
 
 
 
+**Indirect token distribution:**
+Say the feature that a developer intends to implement is a method by which a token issuer can pay dividends. This possibility may not seem feasible with the understanding that:
+
+- The tokens in the initial distribution may be spent, and thus dividends shouldn't be paid to that recipients address.
+- The tokens could have moved an indefinite number of times, and split to the atomic units.
+- Tracing the "origin" of a token is significantly easier than identifying the current "location" of all tokens from an origin.
+
+The implementation of some features can be made challenging if there is the requirement that the intended recipient of a token be included in the output of that transaction. The possibility of token distribution via a method which does not include the recipient as the output of the transaction should not necessarily be excluded from consideration provided that the mechanisms are reasonably compatible with the transaction model.
+
+If an issuer intends to pay dividends to the owners of tokens in proportion to their stake, the issuer must identify the token at creation as such. This flag can be used to modify transactions which spend that token in a way that supports indirect token distribution.
+
+The transactions that support indirect token distribution must maintain the violation of that outputs fungibility. This is done by crafting the transactions under similar guidelines that define colored coin transactions.
+
+Conceptually, this proposes a method by which a transaction that intends to pay dividends can indirectly "grant" more tokens to all current token owners while maintaining the transaction model. A developer can distribute "other" tokens provided that provisions are made for a token to represent multiple types of tokens.
+
+Transactions of this nature must be considered carefully before implementation as there may be ramifications in terms of the complexity it adds to the system.
+
+
+
 **Instanced implementation:**
 
 By globally defining a sufficiently large ecosystem parameter in the header of OP_RETURN outputs, developers can self serve an instance of the protocol and have a platform on which to innovate, experiment, or even deploy functional implementations. Note that the term instance is used specifically to identify a protocol implementation that is interoperable with other protocol implementations.
