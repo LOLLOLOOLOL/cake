@@ -1,13 +1,6 @@
-Cake: An Instanced Approach to Bitcoin Protocol Layers
-======================================================
+An Instanced Approach to Bitcoin Protocol Layers
+================================================
 
-The entity who signed following:
-
-HJz4bx6eZl5y7CoF9ZBNn2GhtYko32L68ysDMnvNDOZm/9ECegPn4BWq+VWITIO3NUuF4rI7I1xbzLtuyOvSGVU=
-
-takinglaughterseriously@gmail.com
-
-June 3, 2014
 
 
 **Abstract:**
@@ -78,6 +71,16 @@ The core benefit of staged transactions lie in the potential for trustless and s
 
 
 
+**Prefixed transactions:**
+
+If a staged transaction proposes an action for consideration, a **prefixed transaction** *defines what* will happen a result of the subsequent actions.
+
+To frame this with a scenario, consider token issuance. If a prefixed transaction defines the terms and conditions of the issuance, the following actions can be defined by those terms and conditions.
+
+Prefixed transactions can establish a framework for token distribution between untrusted parties.
+
+
+
 **Indirect token distribution:**
 
 Say the feature that a developer intends to implement is a method by which a token issuer can pay dividends. This possibility may not seem feasible with the understanding that:
@@ -122,7 +125,7 @@ The transaction model of this protocol drastically reduces the ambiguity between
 - Under what circumstances does the protocol accept the senders input?
 - Etc…
 
-A core difference between the two methodologies is the manner in which actions or events can be organized on the blockchain. The utilization of the transaction model outlined by this protocol allows for the implicit movement of tokens and the explicit organization between untrusted parties via staged transactions. In comparison, alternate protocols only use explicit movement of tokens, and thus must rely on a time or block count and fee specification to enable reasonably “safe” exchange of tokens for Bitcoin.
+A core difference between the two methodologies is the manner in which actions or events can be organized on the blockchain. The utilization of the transaction model outlined by this protocol allows for the implicit movement of tokens and the explicit organization between untrusted parties via staged and prefixed transactions. In comparison, alternate protocols only use explicit movement of tokens, and thus must rely on a time or block count and fee specification to enable reasonably “safe” exchange of tokens for Bitcoin.
 
 These unnecessary complications drastically increase the complexity of protocol specification and therefore affect ease of implementation, safety of interpretation, ability to scale, and overall transaction security.
 
