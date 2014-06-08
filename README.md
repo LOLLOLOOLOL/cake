@@ -21,8 +21,8 @@ This paper proposes a methodology of crafting transactions which can form a prot
 
 The transaction model is flexible and can be generalized by the following rules of transaction interpretation:
 
-A transaction consumes the tokens represented by the input.
-A transaction will send all tokens to the last output, unless otherwise specified by an OP_RETURN output.
+- A transaction consumes the tokens represented by the input.
+- A transaction will send all tokens to the last output, unless otherwise specified by an OP_RETURN output.
 
 If we spend an output that represents a quantity of tokens in a normal Bitcoin transaction, the tokens will typically be returned to the sender at a change address. By carefully crafting transactions, we can guarantee that an invalid transaction on this protocol layer will return all tokens to the sender. This basic mechanism of token transfer allows the protocol to stay in line with Bitcoin best practices by not reusing addresses, and provides a means by which the fungibility of an output is violated only insofar that it represents a quantity of tokens.
 
