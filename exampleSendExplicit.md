@@ -27,3 +27,12 @@
 + Size: 16-bit unsigned integer
 + Valid values: 0 to 65535
 + Value: 5460
+
+### sendExplicit size analysis
++ Single recipient
+	* Size: 6 bytes minimum, 13 bytes maximum
++ Multiple recipients
+	* Overhead: 7 bytes minimum, 14 bytes maximum
+	* Size for added recipients: 1 byte minimum, 13 bytes maximum
++ Potential recipients in a single transaction given 40 bytes of data:
+	* 34 unique recipients.
